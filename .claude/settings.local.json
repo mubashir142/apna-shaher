@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mongod --version)",
+      "Bash(winget --version)",
+      "Bash(powershell.exe -Command 'Get-Command mongod -ErrorAction SilentlyContinue; $env:PATH -split '\\\\'';'\\\\'' | Where-Object { $_ -match -i '\\\\''mongo'\\\\'' }')",
+      "Bash(powershell.exe -Command \"& 'C:\\\\Program Files\\\\MongoDB\\\\Server\\\\*\\\\bin\\\\mongosh.exe' --eval 'db.runCommand\\({ping:1}\\)' --quiet 2>&1 | head -5\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem 'C:\\\\Program Files\\\\MongoDB' -ErrorAction SilentlyContinue | Format-Table Name\")",
+      "Bash(powershell.exe -Command 'Get-ChildItem '\\\\''C:\\\\Program Files\\\\MongoDB\\\\Server'\\\\'' | ForEach-Object { Get-ChildItem $_.FullName\\\\bin -ErrorAction SilentlyContinue | Select-Object Name } | Format-Table Name')",
+      "Bash(powershell.exe -Command \"Get-ChildItem 'C:\\\\Program Files\\\\MongoDB\\\\Server' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 20 FullName\")",
+      "Bash(timeout 8 npx tsx src/index.ts)",
+      "Bash(npx tsx *)",
+      "Bash(curl -s http://localhost:5000/api/health)",
+      "Bash(kill %1)",
+      "PowerShell(cd \"c:\\\\ApnaShehar\\\\server\"; $job = Start-Job { cd \"c:\\\\ApnaShehar\\\\server\"; npx tsx src/index.ts 2>&1 }; Start-Sleep 7; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -X POST http://localhost:5000/api/auth/register -H 'Content-Type: application/json' -d '{\"name\":\"Admin\",\"email\":\"admin@apnashehar.com\",\"password\":\"admin123\",\"role\":\"customer\"}')",
+      "Bash(powershell.exe -Command \"& 'C:\\\\Program Files\\\\MongoDB\\\\Server\\\\8.0\\\\bin\\\\mongod.exe' --version\")",
+      "Bash(./mongosh.exe --quiet --eval 'db.getSiblingDB\\(\"apnashehar\"\\).users.updateOne\\({email:\"admin@apnashehar.com\"},{$set:{role:\"admin\"}}\\)')",
+      "Bash(powershell.exe -Command \"Get-ChildItem 'C:\\\\Program Files\\\\MongoDB' -Recurse -Filter 'mongosh.exe' -ErrorAction SilentlyContinue | Select-Object -First 1 FullName; Get-ChildItem 'C:\\\\Users' -Recurse -Filter 'mongosh.exe' -ErrorAction SilentlyContinue | Select-Object -First 1 FullName; where.exe mongosh 2>&1\")",
+      "Bash(node -e ' *)"
+    ]
+  }
+}
